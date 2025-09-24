@@ -16,7 +16,6 @@ dependencies {
     implementation("io.ktor:ktor-server-netty:3.3.0")
     implementation("org.slf4j:slf4j-api:1.7.36")
     runtimeOnly("ch.qos.logback:logback-classic:1.5.13")
-    // make sure versions match Ktor 3.x:
     implementation("io.ktor:ktor-server-status-pages:3.3.0")
 }
 
