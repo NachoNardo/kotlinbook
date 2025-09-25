@@ -14,7 +14,7 @@ dependencies {
     testImplementation(kotlin("test"))
     implementation("io.ktor:ktor-server-core:3.3.0")
     implementation("io.ktor:ktor-server-netty:3.3.0")
-    implementation("org.slf4j:slf4j-api:1.7.36")
+    implementation("ch.qos.logback:logback-classic:1.4.11")
     runtimeOnly("ch.qos.logback:logback-classic:1.5.13")
     implementation("io.ktor:ktor-server-status-pages:3.3.0")
     implementation("com.typesafe:config:1.4.5")
