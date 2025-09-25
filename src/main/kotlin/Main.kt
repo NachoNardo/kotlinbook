@@ -1,5 +1,6 @@
 package kotlinbook
 
+import com.typesafe.config.ConfigFactory
 import io.ktor.http.HttpStatusCode
 import io.ktor.server.application.*
 import io.ktor.server.engine.*
@@ -9,10 +10,10 @@ import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import org.slf4j.LoggerFactory
 
-val log = LoggerFactory.getLogger("kotlinbook.Main")
+val log = LoggerFactory.getLogger("kotlinbook.Main")!!
 val config = ConfigFactory
     .parseResources("app.conf")
-    .resolve()
+    .resolve()!!
 
 fun main() {
     log.debug("Starting application...")
@@ -24,7 +25,7 @@ fun main() {
 fun Application.createKtorApplication() {
     install(StatusPages) {
         exception<Throwable> { call, cause ->
-            log.error("An unknown error occurred", cause)
+            kotlinbook.log.error("An unknown error occurred", cause)
 
             call.respondText(
                 text = "500: $cause",
