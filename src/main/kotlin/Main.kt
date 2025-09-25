@@ -10,10 +10,13 @@ import io.ktor.server.routing.*
 import org.slf4j.LoggerFactory
 
 val log = LoggerFactory.getLogger("kotlinbook.Main")
+val config = ConfigFactory
+    .parseResources("app.conf")
+    .resolve()
 
 fun main() {
     log.debug("Starting application...")
-    embeddedServer(Netty, port = 8080) {
+    embeddedServer(Netty, port = config.getInt("httpPort")) {
         createKtorApplication()
     }.start(wait = true)
 }
@@ -21,7 +24,7 @@ fun main() {
 fun Application.createKtorApplication() {
     install(StatusPages) {
         exception<Throwable> { call, cause ->
-            kotlinbook.log.error("An unknown error occurred", cause)
+            log.error("An unknown error occurred", cause)
 
             call.respondText(
                 text = "500: $cause",

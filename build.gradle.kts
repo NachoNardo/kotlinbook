@@ -17,6 +17,7 @@ dependencies {
     implementation("org.slf4j:slf4j-api:1.7.36")
     runtimeOnly("ch.qos.logback:logback-classic:1.5.13")
     implementation("io.ktor:ktor-server-status-pages:3.3.0")
+    implementation("com.typesafe:config:1.4.5")
 }
 
 tasks.test {
